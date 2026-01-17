@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Payal ❤️ Saurav</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+  margin:0;
+  font-family:Georgia,serif;
+  background:#f8f2eb;
+  color:#3b2b1f;
+}
+
+/* ===== HERO ===== */
+.hero-wrapper{
+  background:#2b1812;
+  padding:40px 20px 30px;
+  text-align:center;
+  position:relative;
+}
+
+.hero-photo{
+  max-width:900px;
+  width:100%;
+  height:900px;
+  object-fit:cover;
+  object-position:center 80%;
+  display:block;
+  margin:0 auto;
+  border-radius:6px;
+}
+
+.hero-text{
+  position:absolute;
+  top:30px;
+  left:0;
+  right:0;
+  text-align:center;
+  color:black;
+  background:linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.55),
+    rgba(0,0,0,0)
+  );
+  padding:20px;
+}
+
+/* text colors */
+.hero-text h1{
+  color:#E6C37A;
+  font-size:46px;
+  margin:10px 0;
+}
+
+.hero-text p{
+  color:#EADDC8;
+}
+
+.date-box{
+  display:inline-block;
+  color:#F5EFE6;
+  border:1.5px solid #E6C37A;
+  background:rgba(0,0,0,0.25);
+  padding:12px 28px;
+  border-radius:30px;
+  font-size:20px;
+  margin-top:10px;
+}
+
+.countdown-label{
+  margin-top:15px;
+  font-size:18px;
+  color:black;
+}
+
+.countdown{
+  font-size:26px;
+  margin-top:5px;
+  color:black;
+}
+
+/* ===== MOBILE HERO ANIMATION ===== */
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(20px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+@keyframes softZoom {
+  from { opacity:0; transform:scale(0.95); }
+  to   { opacity:1; transform:scale(1); }
+}
+
+@media (max-width:768px){
+  .hero-text{
+    animation:fadeUp 1s ease-out forwards;
+  }
+  .date-box{
+    animation:softZoom 0.8s ease-out forwards;
+    animation-delay:0.4s;
+  }
+}
+
+/* ===== HASHTAG ===== */
+#hashtag{
+  background:#8b4a2f;
+  color:white;
+  padding:10px;
+  overflow:hidden;
+  white-space:nowrap;
+}
+#hashtag span{
+  display:inline-block;
+  padding-left:100%;
+  animation:scroll 15s linear infinite;
+}
+@keyframes scroll{
+  0%{transform:translateX(0);}
+  100%{transform:translateX(-100%);}
+}
+
+/* ===== CONTENT ===== */
+.section{
+  max-width:1000px;
+  margin:auto;
+  padding:40px 20px;
+  text-align:center;
+}
+
+.itinerary h2{
+  color:#8b4a2f;
+  font-size:32px;
+}
+
+/* ===== CARD ANIMATION ===== */
+.card{
+  background:white;
+  border-radius:12px;
+  padding:25px;
+  margin:25px auto;
+  max-width:700px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+  opacity:0;
+  transform:translateY(30px);
+  transition:all 0.6s ease;
+}
+
+.card.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* ===== GALLERY ===== */
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:15px;
+}
+.gallery img{
+  width:100%;
+  height:160px;
+  object-fit:cover;
+  border-radius:10px;
+}
+
+/* ===== MAP ===== */
+.map{
+  width:100%;
+  height:250px;
+  border:0;
+  border-radius:10px;
+  margin-top:15px;
+}
+
+/* ===== FOOTER ===== */
+footer{
+  background:#5b2a1c;
+  color:white;
+  text-align:center;
+  padding:40px 20px;
+}
+.footer-quote{
+  font-style:italic;
+  font-size:22px;
+  margin-bottom:15px;
+}
+.footer-hashtag{
+  font-weight:bold;
+  background:rgba(255,255,255,0.1);
+  display:inline-block;
+  padding:10px 20px;
+  border-radius:20px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<div class="hero-wrapper">
+  <img src="hero.jpg" class="hero-photo">
+
+  <div class="hero-text">
+    <p>Together with their families</p>
+    <h1>Payal ❤️ Saurav</h1>
+    <div class="date-box">19th February 2026</div>
+    <div class="countdown-label">Our Forever Starts In…</div>
+    <div class="countdown" id="countdown"></div>
+  </div>
+</div>
+
+<div id="hashtag">
+  <span>#PayalWedsSaurav &nbsp; #PS2026 &nbsp; #SauravKiPayal &nbsp; #ForeverPS</span>
+</div>
+
+<div class="section">
+
+  <div class="itinerary">
+    <h2>Our Wedding Itinerary</h2>
+    <p>हमारे इस खास दिन का हिस्सा बनने के लिए जरूरी सारी जानकारी नीचे दी गई है।</p>
+  </div>
+
+  <div class="card"><h3>Haldi Ceremony</h3><p>18 Feb 2026 – 10:15 AM</p></div>
+  <div class="card"><h3>Sangeet Night</h3><p>18 Feb 2026 – 6:15 PM</p></div>
+  <div class="card"><h3>Mayra</h3><p>19 Feb 2026 – 11:15 AM</p></div>
+  <div class="card"><h3>The Wedding Day</h3><p>19 Feb 2026 – 7:15 PM</p></div>
+
+  <div class="card">
+    <h3>Our Special Moments</h3>
+    <div class="gallery">
+      <img src="https://via.placeholder.com/300x200">
+      <img src="https://via.placeholder.com/300x200">
+      <img src="https://via.placeholder.com/300x200">
+      <img src="https://via.placeholder.com/300x200">
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Wedding Venue</h3>
+    <p>Jai Chandragarh Palace, Jodhpur</p>
+    <iframe class="map" src="https://www.google.com/maps?q=Jai%20Chandragarh%20Palace%20Jodhpur&output=embed"></iframe>
+  </div>
+
+  <div class="card">
+    <h3>Contact & Help</h3>
+    <p>Bride Side – ____________</p>
+    <p>Groom Side – ____________</p>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-quote">We can’t wait to celebrate with you</div>
+  <div class="footer-hashtag">#PayalWedsSaurav #PS2026 #SauravKiPayal #ForeverPS</div>
+</footer>
+
+<script>
+/* countdown */
+const weddingDate=new Date("Feb 19, 2026 19:15:00").getTime();
+setInterval(()=>{
+  const d=weddingDate-Date.now();
+  const days=Math.floor(d/86400000),
+        hrs=Math.floor((d%86400000)/3600000),
+        min=Math.floor((d%3600000)/60000),
+        sec=Math.floor((d%60000)/1000);
+  document.getElementById("countdown").innerText=
+    days+" Days "+hrs+" Hrs "+min+" Min "+sec+" Sec";
+},1000);
+
+/* card scroll animation */
+const cards=document.querySelectorAll('.card');
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('show');
+    }
+  });
+},{threshold:0.15});
+cards.forEach(card=>observer.observe(card));
+</script>
+
+</body>
+</html>

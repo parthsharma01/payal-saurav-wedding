@@ -2,14 +2,16 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Payal ❤️ Saurav</title>
+<title>Payal & Saurav</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
 <style>
-/* ===== BASE ===== */
 body{
   margin:0;
-  font-family: Georgia, serif;
+  font-family:'Inter', sans-serif;
   background:#f8f2eb;
   color:#3b2b1f;
 }
@@ -17,7 +19,7 @@ body{
 /* ===== HERO ===== */
 .hero-wrapper{
   background:#2b1812;
-  padding:40px 20px 30px;
+  padding:40px 20px 60px;
   text-align:center;
   position:relative;
 }
@@ -39,20 +41,17 @@ body{
   left:0;
   right:0;
   text-align:center;
-  background:linear-gradient(
-    to bottom,
-    rgba(0,0,0,0.55),
-    rgba(0,0,0,0)
-  );
   padding:20px;
 }
 
-.hero-text p{
-  color:#EADDC8;
-  margin:0;
+.hero-text .subtitle{
+  font-size:18px;
+  margin-bottom:6px;
+  color:#000;
 }
 
 .hero-text h1{
+  font-family:'Playfair Display', serif;
   color:#E6C37A;
   font-size:46px;
   margin:10px 0;
@@ -66,120 +65,176 @@ body{
   padding:12px 28px;
   border-radius:30px;
   font-size:20px;
-  margin-top:10px;
+  margin-top:12px;
 }
 
-.countdown-label{
-  margin-top:15px;
-  font-size:18px;
-  color:black;
+.countdown-label,
+.countdown{
+  color:#000;
 }
 
 .countdown{
   font-size:26px;
+  font-weight:500;
   margin-top:5px;
-  color:black;
 }
 
-/* ===== HERO MOBILE ANIMATION ===== */
-@keyframes fadeUp {
-  from { opacity:0; transform:translateY(20px); }
-  to { opacity:1; transform:translateY(0); }
-}
-
-@keyframes softZoom {
-  from { opacity:0; transform:scale(0.95); }
-  to { opacity:1; transform:scale(1); }
-}
-
-@media (max-width:768px){
-  .hero-text{
-    animation:fadeUp 1s ease-out forwards;
-  }
-  .date-box{
-    animation:softZoom 0.8s ease-out forwards;
-    animation-delay:0.4s;
-  }
-}
-
-/* ===== HASHTAG MARQUEE (NO GAP) ===== */
-.hashtag-strip{
-  width:100%;
-  overflow:hidden;
-  background:#fff7f4;
-  padding:14px 0;
-}
-
-.hashtag-track{
-  display:flex;
-  width:max-content;
-  animation:marquee 32s linear infinite;
-}
-
-.hashtag-track span{
-  font-size:42px;
-  font-family:Georgia, serif;
-  color:#d8a9a0;
-  white-space:nowrap;
-  opacity:0.9;
-}
-
-@keyframes marquee{
-  0%{ transform:translateX(0); }
-  100%{ transform:translateX(-50%); }
-}
-
-/* ===== CONTENT ===== */
+/* ===== SECTION ===== */
 .section{
-  max-width:1000px;
+  max-width:1100px;
   margin:auto;
-  padding:40px 20px;
+  padding:50px 20px; /* REDUCED GAP */
   text-align:center;
 }
 
-.itinerary h2{
-  color:#8b4a2f;
-  font-size:32px;
+.alt-section{
+  background:#fffaf6;
+  padding-top:45px;
+  padding-bottom:45px;
 }
 
-/* ===== CARDS ===== */
-.card{
-  background:white;
-  border-radius:12px;
-  padding:25px;
-  margin:25px auto;
-  max-width:700px;
-  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+.section h2{
+  font-family:'Playfair Display', serif;
+  margin-bottom:12px;
+}
+
+/* ===== DIVIDER ===== */
+.divider{
+  width:90px;
+  height:6px;
+  border-top:1px solid #e6c3b8;
+  border-bottom:1px solid #e6c3b8;
+  margin:0 auto 25px; /* REDUCED */
+  position:relative;
+}
+.divider::after{
+  content:"•";
+  position:absolute;
+  left:50%;
+  top:-9px;
+  transform:translateX(-50%);
+  color:#e6c3b8;
+}
+
+/* ===== EVENTS ===== */
+.events-wrapper{
+  padding-top:15px;
+}
+
+.event-card{
+  max-width:420px;
+  margin:35px auto;
+  padding:42px 28px;
+  background:#fdfbf4;
+  box-shadow:0 12px 30px rgba(0,0,0,0.12);
+  clip-path: polygon(
+    10% 0%, 90% 0%, 100% 12%, 96% 92%,
+    90% 100%, 10% 100%, 4% 92%, 0% 12%
+  );
   opacity:0;
-  transform:translateY(30px);
-  transition:all 0.6s ease;
+  transform:translateY(40px);
+  transition:0.8s ease;
 }
 
-.card.show{
+.event-card.show{
   opacity:1;
-  transform:translateY(0);
+  transform:none;
+}
+
+.event-card h3{
+  font-family:'Playfair Display', serif;
+  letter-spacing:4px;
+  margin-bottom:10px;
+}
+
+.event-text{ margin:6px 0; }
+
+.attire{
+  margin-top:12px;
+  font-style:italic;
+  font-size:14px;
+}
+
+/* Event colours */
+.haldi-card{background:#f7efbf;color:#7a6a2f;}
+.sangeet-card{background:#e6dcf4;color:#5e4b84;}
+.mayra-card{background:#f6e3d3;color:#7a4b3a;}
+.wedding-card{background:#f4dede;color:#7a3f3f;}
+
+@media(min-width:900px){
+  .events-wrapper{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:50px;
+    justify-items:center;
+  }
 }
 
 /* ===== GALLERY ===== */
 .gallery{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
   gap:15px;
 }
 .gallery img{
   width:100%;
-  height:160px;
+  height:165px;
   object-fit:cover;
+  border-radius:10px;
+  cursor:pointer;
+}
+
+.gallery-note{
+  margin-top:16px;
+  font-style:italic;
+  font-size:15px;
+  color:#6b5b4b;
+}
+
+/* Lightbox */
+.lightbox{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.8);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:999;
+}
+.lightbox img{
+  max-width:90%;
+  max-height:90%;
   border-radius:10px;
 }
 
 /* ===== MAP ===== */
 .map{
   width:100%;
-  height:250px;
+  height:240px;
   border:0;
-  border-radius:10px;
-  margin-top:15px;
+  border-radius:12px;
+  margin-top:18px;
+}
+
+.map-btn{
+  display:inline-block;
+  margin-top:12px;
+  padding:9px 20px;
+  border-radius:25px;
+  background:#e89aa6;
+  color:white;
+  text-decoration:none;
+  font-size:14px;
+}
+
+/* ===== CONTACT ===== */
+.contact-card{
+  max-width:420px;
+  margin:0 auto;
+  background:white;
+  padding:26px;
+  border-radius:14px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.1);
 }
 
 /* ===== FOOTER ===== */
@@ -189,19 +244,10 @@ footer{
   text-align:center;
   padding:40px 20px;
 }
-
 .footer-quote{
   font-style:italic;
-  font-size:22px;
-  margin-bottom:15px;
-}
-
-.footer-hashtag{
-  font-weight:bold;
-  background:rgba(255,255,255,0.1);
-  display:inline-block;
-  padding:10px 20px;
-  border-radius:20px;
+  font-size:18px;
+  line-height:1.6;
 }
 </style>
 </head>
@@ -211,94 +257,142 @@ footer{
 <!-- HERO -->
 <div class="hero-wrapper">
   <img src="hero.jpg" class="hero-photo">
-
   <div class="hero-text">
-    <p>"They're Getting Married!"</p>
-    <h1>Payal & Saurav</h1>
+    <div class="subtitle">They’re Getting Married</div>
+    <h1>Payal ❤️ Saurav</h1>
     <div class="date-box">19th February 2026</div>
     <div class="countdown-label">Our Forever Starts In…</div>
     <div class="countdown" id="countdown"></div>
   </div>
 </div>
 
-<!-- HASHTAG STRIP -->
-<div class= "hashtag-strip">
-  <div class="hashtag-track">
-    <span>#SauravKiPayal&nbsp;&nbsp;</span>
-    <span>#SauravKiPayal&nbsp;&nbsp;</span>
-    <span>#SauravKiPayal&nbsp;&nbsp;</span>
-    <span>#SauravKiPayal&nbsp;&nbsp;</span>
-  </div>
-  
-</div>
-  
-
+<!-- EVENTS -->
 <div class="section">
+  <h2>Our Wedding Itinerary</h2>
+  <p>हमारे इस खास दिन का हिस्सा बनने के लिए जरूरी सारी जानकारी नीचे दी गई है।</p>
 
-  <div class="itinerary">
-    <h2>Our Wedding Itinerary</h2>
-    <p>हमारे इस खास दिन का हिस्सा बनने के लिए जरूरी सारी जानकारी नीचे दी गई है।</p>
-  </div>
+  <div class="events-wrapper">
 
-  <div class="card"><h3>Haldi Ceremony</h3><p>18 Feb 2026 – 10:15 AM</p></div>
-  <div class="card"><h3>Sangeet Night</h3><p>18 Feb 2026 – 6:15 PM</p></div>
-  <div class="card"><h3>Mayra</h3><p>19 Feb 2026 – 11:15 AM</p></div>
-  <div class="card"><h3>The Wedding Day</h3><p>19 Feb 2026 – 7:15 PM</p></div>
-
-  <div class="card">
-    <h3>Our Special Moments</h3>
-    <div class="gallery">
-      <img src="https://via.placeholder.com/300x200">
-      <img src="https://via.placeholder.com/300x200">
-      <img src="https://via.placeholder.com/300x200">
-      <img src="https://via.placeholder.com/300x200">
+    <div class="event-card haldi-card">
+      <h3>HALDI</h3>
+      <p class="event-text">Wednesday · 18 Feb 2026 · 10:15 AM</p>
+      <p class="event-text">Jai Chandragarh Palace, Jodhpur</p>
+      <div class="attire">
+        Suggested Attire:<br>
+        Ladies – Poshak<br>
+        Gents – Kurta Pajama
+      </div>
     </div>
-  </div>
 
-  <div class="card">
-    <h3>Wedding Venue</h3>
-    <p>Jai Chandragarh Palace, Jodhpur</p>
-    <iframe class="map" src="https://www.google.com/maps?q=Jai%20Chandragarh%20Palace%20Jodhpur&output=embed"></iframe>
-  </div>
+    <div class="event-card sangeet-card">
+      <h3>SANGEET NIGHT</h3>
+      <p class="event-text">Wednesday · 18 Feb 2026 · 6:15 PM</p>
+      <p class="event-text">Jai Chandragarh Palace, Jodhpur</p>
+      <div class="attire">
+        Suggested Attire – Stylish & Fun
+      </div>
+    </div>
 
-  <div class="card">
-    <h3>Contact & Help</h3>
+    <div class="event-card mayra-card">
+      <h3>MAYRA</h3>
+      <p class="event-text">Thursday · 19 Feb 2026 · 11:15 AM</p>
+      <p class="event-text">Jai Chandragarh Palace, Jodhpur</p>
+    </div>
+
+    <div class="event-card wedding-card">
+      <h3>THE WEDDING DAY</h3>
+      <p class="event-text">Thursday · 19 Feb 2026 · 7:15 PM</p>
+      <p class="event-text">Jai Chandragarh Palace, Jodhpur</p>
+      <div class="attire">
+        Suggested Attire – Traditional Indian<br>
+        Elegant & Cultural
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- GALLERY -->
+<div class="section alt-section">
+  <div class="divider"></div>
+  <h2>Our Special Moments</h2>
+  <div class="gallery">
+    <img src="https://via.placeholder.com/400x300">
+    <img src="https://via.placeholder.com/400x300">
+    <img src="https://via.placeholder.com/400x300">
+    <img src="https://via.placeholder.com/400x300">
+  </div>
+  <div class="gallery-note">
+    A glimpse of moments leading to our forever.
+  </div>
+</div>
+
+<!-- VENUE -->
+<div class="section alt-section">
+  <div class="divider"></div>
+  <h2><span style="color:#e89aa6;">📍</span> Wedding Venue</h2>
+  <p>Jai Chandragarh Palace, Jodhpur</p>
+  <iframe class="map"
+    src="https://www.google.com/maps?q=Jai%20Chandragarh%20Palace%20Jodhpur&output=embed"></iframe>
+  <a class="map-btn" target="_blank"
+     href="https://maps.google.com/?q=Jai+Chandragarh+Palace+Jodhpur">
+     Get Directions
+  </a>
+</div>
+
+<!-- CONTACT -->
+<div class="section alt-section">
+  <div class="divider"></div>
+  <h2>Contact & Help</h2>
+  <div class="contact-card">
     <p>Bride Side – 7222872037</p>
     <p>Groom Side – 7976167668</p>
   </div>
-
 </div>
 
 <footer>
-  <div class="footer-quote">We can’t wait to celebrate with you</div>
-  <div class="footer-hashtag">#PayalWedsSaurav #PS2026 #SauravKiPayal #ForeverPS</div>
+  <div class="footer-quote">
+    With the love and blessings of our families,<br>
+    we warmly invite you to be a part of our special day.<br>
+    We look forward to celebrating together.
+  </div>
 </footer>
 
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <img id="lightbox-img">
+</div>
+
 <script>
-/* COUNTDOWN */
-const weddingDate = new Date("Feb 19, 2026 19:15:00").getTime();
+/* Countdown */
+const weddingDate=new Date("Feb 19, 2026 19:15:00").getTime();
 setInterval(()=>{
-  const d = weddingDate - Date.now();
-  const days = Math.floor(d/86400000),
-        hrs  = Math.floor((d%86400000)/3600000),
-        min  = Math.floor((d%3600000)/60000),
-        sec  = Math.floor((d%60000)/1000);
-  document.getElementById("countdown").innerText =
+  const d=weddingDate-Date.now();
+  const days=Math.floor(d/86400000),
+        hrs=Math.floor((d%86400000)/3600000),
+        min=Math.floor((d%3600000)/60000),
+        sec=Math.floor((d%60000)/1000);
+  document.getElementById("countdown").innerText=
     days+" Days "+hrs+" Hrs "+min+" Min "+sec+" Sec";
 },1000);
 
-/* CARD SCROLL ANIMATION */
-const cards = document.querySelectorAll('.card');
-const observer = new IntersectionObserver(entries=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      entry.target.classList.add('show');
-    }
+/* Scroll animation */
+const cards=document.querySelectorAll('.event-card');
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting) e.target.classList.add('show');
   });
-},{threshold:0.15});
-cards.forEach(card=>observer.observe(card));
+},{threshold:0.2});
+cards.forEach(c=>obs.observe(c));
+
+/* Gallery lightbox */
+const lb=document.getElementById('lightbox');
+const lbImg=document.getElementById('lightbox-img');
+document.querySelectorAll('.gallery img').forEach(img=>{
+  img.onclick=()=>{lb.style.display='flex';lbImg.src=img.src;}
+});
+lb.onclick=()=>lb.style.display='none';
 </script>
 
 </body>
 </html>
-

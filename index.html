@@ -74,9 +74,9 @@ body{
 }
 
 .countdown{
-  font-size:26px;
+  font-size:24px;
   font-weight:500;
-  margin-top:5px;
+  margin-top:6px;
 }
 
 /* ================= SECTIONS ================= */
@@ -162,7 +162,7 @@ body{
   }
 }
 
-/* ================= GALLERY (PREMIUM) ================= */
+/* ================= GALLERY ================= */
 
 .gallery{
   display:grid;
@@ -177,6 +177,7 @@ body{
   height:auto;
   border-radius:14px;
   display:block;
+  cursor:pointer;
   transition:transform 0.4s ease, box-shadow 0.4s ease;
 }
 
@@ -244,6 +245,37 @@ footer{
   font-size:18px;
   line-height:1.6;
 }
+
+/* ================= SCROLL ANIMATION ================= */
+
+.fade-up{
+  opacity:0;
+  transform:translateY(24px);
+  transition:0.7s ease;
+}
+.fade-up.show{
+  opacity:1;
+  transform:none;
+}
+
+/* ================= LIGHTBOX ================= */
+
+.lightbox{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.88);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
+}
+
+.lightbox img{
+  max-width:92%;
+  max-height:92%;
+  border-radius:14px;
+  box-shadow:0 20px 40px rgba(0,0,0,0.4);
+}
 </style>
 </head>
 
@@ -269,7 +301,7 @@ footer{
 
   <div class="events-wrapper">
 
-    <div class="event-card haldi-card">
+    <div class="event-card haldi-card fade-up">
       <h3>HALDI</h3>
       <p class="event-text">Wednesday · 18 Feb 2026 · 10:15 AM</p>
       <div class="attire">
@@ -279,7 +311,7 @@ footer{
       </div>
     </div>
 
-    <div class="event-card sangeet-card">
+    <div class="event-card sangeet-card fade-up">
       <h3>SANGEET NIGHT</h3>
       <p class="event-text">Wednesday · 18 Feb 2026 · 6:15 PM</p>
       <div class="attire">
@@ -287,12 +319,12 @@ footer{
       </div>
     </div>
 
-    <div class="event-card mayra-card">
+    <div class="event-card mayra-card fade-up">
       <h3>MAYRA</h3>
       <p class="event-text">Thursday · 19 Feb 2026 · 11:15 AM</p>
     </div>
 
-    <div class="event-card wedding-card">
+    <div class="event-card wedding-card fade-up">
       <h3>THE WEDDING DAY</h3>
       <p class="event-text">Thursday · 19 Feb 2026 · 7:15 PM</p>
       <div class="attire">
@@ -310,8 +342,8 @@ footer{
   <h2>Our Special Moments</h2>
 
   <div class="gallery">
-    <img src="img1.jpeg" alt="Pre wedding moment 1">
-    <img src="img2.jpeg" alt="Pre wedding moment 2">
+    <img src="img1.jpeg" class="fade-up">
+    <img src="img2.jpeg" class="fade-up">
   </div>
 
   <div class="gallery-note">
@@ -337,16 +369,21 @@ footer{
   <div class="divider"></div>
   <h2>Contact & Help</h2>
   <div class="contact-card">
-    <p>Bride's Brother  – 7222872037</p>
+    <p>Bride's Brother – 7222872037</p>
     <p>Groom's Brother – 7976167668</p>
   </div>
 </div>
 
 <footer>
   <div class="footer-quote">
-  We look forward to celebrating this special day together.
+    Let’s celebrate love, laughter, and togetherness.
   </div>
 </footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <img id="lightbox-img" alt="Gallery Image">
+</div>
 
 <script>
 /* Countdown */
@@ -355,13 +392,34 @@ setInterval(()=>{
   const d=weddingDate-Date.now();
   const days=Math.floor(d/86400000),
         hrs=Math.floor((d%86400000)/3600000),
-        min=Math.floor((d%3600000)/60000),
-        sec=Math.floor((d%60000)/1000);
+        min=Math.floor((d%3600000)/60000);
   document.getElementById("countdown").innerText=
-    days+" Days "+hrs+" Hrs "+min+" Min "+sec+" Sec";
+    days+" Days · "+hrs+" Hrs · "+min+" Min";
 },1000);
+
+/* Scroll animation */
+const animatedItems=document.querySelectorAll('.fade-up');
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('show');
+      observer.unobserve(entry.target);
+    }
+  });
+},{rootMargin:"0px 0px -80px 0px"});
+animatedItems.forEach(item=>observer.observe(item));
+
+/* Lightbox */
+const lightbox=document.getElementById('lightbox');
+const lightboxImg=document.getElementById('lightbox-img');
+document.querySelectorAll('.gallery img').forEach(img=>{
+  img.addEventListener('click',()=>{
+    lightbox.style.display='flex';
+    lightboxImg.src=img.src;
+  });
+});
+lightbox.addEventListener('click',()=>lightbox.style.display='none');
 </script>
 
 </body>
 </html>
-
